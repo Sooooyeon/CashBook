@@ -165,12 +165,79 @@ namespace MoneyBook
             // 저장하기
             // 날짜,분류,입금,출금,비고
             // 현재 폴더 경로를 가져와 Data폴더 생성해 csv 형식으로 파일 저장
-            string 파일명 = AppDomain.CurrentDomain.BaseDirectory + "Data\\2024-5.csv";
+            string 저장폴더 = AppDomain.CurrentDomain.BaseDirectory + "Data";
+            string 파일명 = 저장폴더 + "\\2024-5.csv";
+            string 내용 = "날짜,분류,입금,출금,비고";
+
+            // 저장폴더가 없는 경우에만 폴더 생성
+            if (System.IO.Directory.Exists(저장폴더) == false)
+                System.IO.Directory.CreateDirectory(저장폴더); // 폴더생성
+
+            int 건수 = lv1.Items.Count;
+            for(int i =0; i < 건수; i++)
+            {
+                ListViewItem item = lv1.Items[i];
+                string 날짜 = item.SubItems[0].Text;
+                string 분류 = item.SubItems[1].Text;
+                string 입금 = item.SubItems[2].Text;
+                string 출금 = item.SubItems[3].Text;
+                string 비고 = item.SubItems[4].Text;
+                내용 += "\r\n" + 날짜 + "," + 분류 + "," + 입금 + "," + 출금 + "," + 비고;
+            }
+
+            // 파일에 저장
+            System.IO.File.WriteAllText(파일명, 내용, System.Text.Encoding.UTF8);
+            Console.WriteLine("저장파일명=" + 파일명);
+            Console.WriteLine(파일명);
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
             // 불러오기
+            string 저장폴더 = AppDomain.CurrentDomain.BaseDirectory + "Data";
+            string 파일명 = 저장폴더 + "\\2024-5.csv";
+
+            // 파일이 없으면 사용불가
+            if (System.IO.File.Exists(파일명) == false)
+            {
+                MessageBox.Show("저장된 파일이 없습니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            // 내용을 지운다.
+            lv1.Items.Clear();
+
+            // 파일을 읽어옴
+            string[] 내용 = System.IO.File.ReadAllLines(파일명, System.Text.Encoding.UTF8);
+            Console.WriteLine(내용);
+
+            int 건수 = 내용.Length;
+            for (int i = 1; i < 건수; i++)
+            {
+                string 줄내용 = 내용[i];
+                string[] 줄버퍼 = 줄내용.Split(',');
+
+                ListViewItem item = lv1.Items.Add(줄버퍼[0]); // 날짜
+                item.SubItems.Add(줄버퍼[1]); // 분류
+
+                if (줄버퍼[2] == "") 줄버퍼[2] = "0";
+                if (줄버퍼[3] == "") 줄버퍼[3] = "0";
+
+                int 입금액 = int.Parse(줄버퍼[2]);
+                int 출금액 = int.Parse(줄버퍼[3]);
+
+                if(입금액 != 0)
+                    item.SubItems.Add(입금액.ToString("N0")); // 입금
+                else
+                    item.SubItems.Add("");
+
+                if (출금액 != 0)
+                    item.SubItems.Add(출금액.ToString("N0")); // 출금
+                else
+                    item.SubItems.Add("");
+
+                item.SubItems.Add(줄버퍼[4]); // 비고
+            }
         }
     }
 }
