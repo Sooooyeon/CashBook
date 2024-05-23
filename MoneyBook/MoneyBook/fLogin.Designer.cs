@@ -46,6 +46,7 @@
             // 
             // txtId
             // 
+            this.txtId.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txtId.Location = new System.Drawing.Point(40, 54);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(233, 21);
@@ -101,9 +102,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtPw;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnOk;
+        public System.Windows.Forms.TextBox txtId;
     }
 }

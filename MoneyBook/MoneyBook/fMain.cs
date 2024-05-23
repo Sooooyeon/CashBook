@@ -17,13 +17,24 @@ namespace MoneyBook
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void fMain_Load(object sender, EventArgs e)
         {
+            // 메인폼을 화면에표시
+            this.Show();
+            userLogin();
+        }
+
+        void userLogin()
+        {
+            // 로그인 창
             fLogin f = new fLogin();
             DialogResult result = f.ShowDialog();
-            if(result == System.Windows.Forms.DialogResult.OK)
+            if (result == System.Windows.Forms.DialogResult.OK)
             {
                 // 로그인 성공
+                string 사용자명 = f.txtId.Text;
+                sbUserName.Text = 사용자명;
+
                 // 1. 자료를 불러와서 표시
                 // 2. 입/출금 등록 버튼을 활성화
                 btnIn.Enabled = true; // 입금버튼 비활성
@@ -37,6 +48,11 @@ namespace MoneyBook
                 btnIn.Enabled = false; // 입금버튼 비활성
                 btnOut.Enabled = false; // 출금버튼 비활성
             }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            userLogin();
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -209,7 +225,6 @@ namespace MoneyBook
 
             // 파일을 읽어옴
             string[] 내용 = System.IO.File.ReadAllLines(파일명, System.Text.Encoding.UTF8);
-            Console.WriteLine(내용);
 
             int 건수 = 내용.Length;
             for (int i = 1; i < 건수; i++)
@@ -238,6 +253,10 @@ namespace MoneyBook
 
                 item.SubItems.Add(줄버퍼[4]); // 비고
             }
+
+            Console.WriteLine(내용);
         }
+
+        
     }
 }
