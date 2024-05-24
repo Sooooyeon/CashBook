@@ -12,6 +12,7 @@ namespace MoneyBook
 {
     public partial class fMain : Form
     {
+        string 현재열린파일명 = "";
         public fMain()
         {
             InitializeComponent();
@@ -21,6 +22,9 @@ namespace MoneyBook
         {
             // 메인폼을 화면에표시
             this.Show();
+
+            현재열린파일명 = AppDomain.CurrentDomain.BaseDirectory + "Data\\" + DateTime.Now.ToString("yyyy-MM") + ".csv";
+
             userLogin();
         }
 
@@ -108,7 +112,7 @@ namespace MoneyBook
                 lv.SubItems.Add(""); // 출금
                 lv.SubItems.Add(비고);
                 Summary();
-
+                saveData();
             }
 
         }
@@ -138,7 +142,7 @@ namespace MoneyBook
                 lv.SubItems.Add(금액);
                 lv.SubItems.Add(비고);
                 Summary();
-
+                saveData();
             }
         }
 
@@ -255,7 +259,7 @@ namespace MoneyBook
             // 날짜,분류,입금,출금,비고
             // 현재 폴더 경로를 가져와 Data폴더 생성해 csv 형식으로 파일 저장
             string 저장폴더 = AppDomain.CurrentDomain.BaseDirectory + "Data";
-            string 파일명 = 저장폴더 + "\\2024-5.csv";
+            string 파일명 = 현재열린파일명; //저장폴더 + "\\" + DateTime.Now.ToString("yyyy-MM") + ".csv";
             string 내용 = "날짜,분류,입금,출금,비고";
 
             // 저장폴더가 없는 경우에만 폴더 생성
@@ -284,12 +288,16 @@ namespace MoneyBook
         {
             // 불러오기
             string 저장폴더 = AppDomain.CurrentDomain.BaseDirectory + "Data";
-            string 파일명 = 저장폴더 + "\\2024-5.csv";
+
+            DateTime 현재시간 = DateTime.Now;
+            string nowstr = 현재시간.ToString("yyyy-MM")+".csv";
+
+            string 파일명 = 현재열린파일명; //저장폴더+ "\\" + nowstr;
 
             // 파일이 없으면 사용불가
             if (System.IO.File.Exists(파일명) == false)
             {
-                MessageBox.Show("저장된 파일이 없습니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("저장된 파일이 없습니다.\n\n" + 파일명, "확인", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -348,6 +356,16 @@ namespace MoneyBook
         private void lv1_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Delete) delData();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            fFileList f = new fFileList();
+            if(f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                현재열린파일명 = f.선택된파일명;
+                loadData();
+            }
         }
     }
 }

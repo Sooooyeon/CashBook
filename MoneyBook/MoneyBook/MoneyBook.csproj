@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fFileList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fFileList.Designer.cs">
+      <DependentUpon>fFileList.cs</DependentUpon>
+    </Compile>
     <Compile Include="fOUT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="fFileList.resx">
+      <DependentUpon>fFileList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fOUT.resx">
       <DependentUpon>fOUT.cs</DependentUpon>
     </EmbeddedResource>
