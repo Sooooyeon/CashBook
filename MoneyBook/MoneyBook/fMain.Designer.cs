@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ToolStripButton btnLogin;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -47,9 +48,17 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sbSumIn = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sbSumOut = new System.Windows.Forms.ToolStripStatusLabel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.편지ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             btnLogin = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -121,20 +130,21 @@
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(88, 22);
-            this.toolStripDropDownButton1.Text = "TestMenu";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(113, 22);
+            this.toolStripDropDownButton1.Text = "저장/불러오기";
+            this.toolStripDropDownButton1.Visible = false;
             // 
             // btnSave
             // 
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(122, 22);
+            this.btnSave.Size = new System.Drawing.Size(180, 22);
             this.btnSave.Text = "저장하기";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnLoad
             // 
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(122, 22);
+            this.btnLoad.Size = new System.Drawing.Size(180, 22);
             this.btnLoad.Text = "불러오기";
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
@@ -142,7 +152,11 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.sbUserName});
+            this.sbUserName,
+            this.toolStripStatusLabel2,
+            this.sbSumIn,
+            this.toolStripStatusLabel4,
+            this.sbSumOut});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(714, 22);
@@ -157,8 +171,9 @@
             // 
             // sbUserName
             // 
+            this.sbUserName.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.sbUserName.Name = "sbUserName";
-            this.sbUserName.Size = new System.Drawing.Size(16, 17);
+            this.sbUserName.Size = new System.Drawing.Size(17, 17);
             this.sbUserName.Text = "...";
             // 
             // lv1
@@ -169,6 +184,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.lv1.ContextMenuStrip = this.contextMenuStrip1;
             this.lv1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lv1.FullRowSelect = true;
             this.lv1.GridLines = true;
@@ -180,6 +196,8 @@
             this.lv1.TabIndex = 2;
             this.lv1.UseCompatibleStateImageBehavior = false;
             this.lv1.View = System.Windows.Forms.View.Details;
+            this.lv1.DoubleClick += new System.EventHandler(this.lv1_DoubleClick);
+            this.lv1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lv1_KeyDown);
             // 
             // columnHeader1
             // 
@@ -206,6 +224,52 @@
             this.columnHeader5.Text = "비고";
             this.columnHeader5.Width = 250;
             // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(43, 17);
+            this.toolStripStatusLabel2.Text = "입금합";
+            // 
+            // sbSumIn
+            // 
+            this.sbSumIn.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.sbSumIn.Name = "sbSumIn";
+            this.sbSumIn.Size = new System.Drawing.Size(16, 17);
+            this.sbSumIn.Text = "0";
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(43, 17);
+            this.toolStripStatusLabel4.Text = "출금합";
+            // 
+            // sbSumOut
+            // 
+            this.sbSumOut.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.sbSumOut.Name = "sbSumOut";
+            this.sbSumOut.Size = new System.Drawing.Size(16, 17);
+            this.sbSumOut.Text = "0";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.편지ToolStripMenuItem,
+            this.삭제ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(99, 48);
+            // 
+            // 편지ToolStripMenuItem
+            // 
+            this.편지ToolStripMenuItem.Name = "편지ToolStripMenuItem";
+            this.편지ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.편지ToolStripMenuItem.Text = "편집";
+            // 
+            // 삭제ToolStripMenuItem
+            // 
+            this.삭제ToolStripMenuItem.Name = "삭제ToolStripMenuItem";
+            this.삭제ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.삭제ToolStripMenuItem.Text = "삭제";
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -214,6 +278,7 @@
             this.Controls.Add(this.lv1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "가계부";
@@ -222,6 +287,7 @@
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,6 +312,13 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem btnSave;
         private System.Windows.Forms.ToolStripMenuItem btnLoad;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel sbSumIn;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel sbSumOut;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 편지ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 삭제ToolStripMenuItem;
     }
 }
 

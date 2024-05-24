@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fLogin));
             this.label1 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtPw = new System.Windows.Forms.TextBox();
@@ -51,6 +52,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(233, 21);
             this.txtId.TabIndex = 1;
+            this.txtId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtId_KeyDown);
             // 
             // txtPw
             // 
@@ -59,6 +61,7 @@
             this.txtPw.PasswordChar = '*';
             this.txtPw.Size = new System.Drawing.Size(233, 21);
             this.txtPw.TabIndex = 3;
+            this.txtPw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPw_KeyDown);
             // 
             // label2
             // 
@@ -89,6 +92,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "fLogin";

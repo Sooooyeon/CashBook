@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fIN));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -77,6 +78,7 @@
             // 
             // txtType
             // 
+            this.txtType.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txtType.Location = new System.Drawing.Point(93, 81);
             this.txtType.Name = "txtType";
             this.txtType.Size = new System.Drawing.Size(214, 21);
@@ -91,6 +93,7 @@
             // 
             // txtMemo
             // 
+            this.txtMemo.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txtMemo.Location = new System.Drawing.Point(93, 165);
             this.txtMemo.Multiline = true;
             this.txtMemo.Name = "txtMemo";
@@ -128,6 +131,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "fIN";
