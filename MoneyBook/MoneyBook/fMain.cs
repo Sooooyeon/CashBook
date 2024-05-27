@@ -34,6 +34,7 @@ namespace MoneyBook
             int 목록건수 = this.lv1.Items.Count;
             int 합계_입금 = 0;
             int 합계_출금 = 0;
+            int 잔액 = 0;
 
             for (int i = 0; i < 목록건수; i++)
             {
@@ -47,11 +48,14 @@ namespace MoneyBook
                 int i입금 = int.Parse(입금);
                 int i출금 = int.Parse(출금);
 
+                잔액 += i입금 - i출금;
+
                 합계_입금 += i입금;
                 합계_출금 += i출금;
             }
             sbSumIn.Text = 합계_입금.ToString("N0");
             sbSumOut.Text = 합계_출금.ToString("N0");
+            sbAmt.Text = 잔액.ToString("N0");
         }
 
         void userLogin()
@@ -301,6 +305,9 @@ namespace MoneyBook
                 return;
             }
 
+            string 선택월 = 파일명.Substring(파일명.LastIndexOf("\\")+1,7);
+            lbmonth.Text = 선택월;
+
             // 내용을 지운다.
             lv1.Items.Clear();
 
@@ -310,6 +317,7 @@ namespace MoneyBook
                     .ToArray();
 
             int 건수 = 내용.Length;
+
             for (int i = 1; i < 건수; i++)
             {
                 string 줄내용 = 내용[i];
@@ -366,6 +374,60 @@ namespace MoneyBook
                 현재열린파일명 = f.선택된파일명;
                 loadData();
             }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            // 마감 확인
+            var dlg = MessageBox.Show("마감하시겠습니까?\n\n마감 이후 월의 자료가 있다면 삭제됩니다.", "확인", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg != System.Windows.Forms.DialogResult.Yes) return;
+
+            // 월마감
+            string 선택월 = lbmonth.Text;
+            string 저장폴더 = AppDomain.CurrentDomain.BaseDirectory + "Data";
+
+            // 다음달로 잔액 이월 (2024 05 -> 2024 06)
+            DateTime 현재월 = DateTime.Parse(선택월 + "-01"); // 2024-05-01
+            DateTime 다음월 = 현재월.AddMonths(1); // 2024-05-01 -> 2024-06-01
+            string 파일명 = 다음월.ToString("yyyy-MM")+".csv";
+            string 전체파일명 = 저장폴더 + "\\" + 파일명; // ...\data\2024-06-04.csv
+
+            // 잔액 
+            int 잔액 = int.Parse(sbAmt.Text.Replace(",",""));
+           
+            // 신규파일에 6월 1일자로 잔액 이월
+
+            string 내용 = "날짜,분류,입금,출금,비고";
+            string 날짜 = 다음월.ToString("yyyy-MM-dd");
+            string 분류 = "잔액이월";
+            string 입금 = 잔액.ToString();
+            string 출금 = "";
+            string 비고 = string.Format("{0}월 잔액이월", 현재월.ToString("yyyy-MM"));
+            string 새로운내용 = 날짜 + "," + 분류 + "," + 입금 + "," + 출금 + "," + 비고;
+
+            // 파일이 존재하는지 확인
+            if (System.IO.File.Exists(전체파일명))
+            {
+                // 기존 파일 내용을 읽어옴
+                string 기존내용 = System.IO.File.ReadAllText(전체파일명, System.Text.Encoding.UTF8);
+                // 기존 내용에 새로운 내용을 추가
+                내용 = 기존내용 + "\r\n" + 새로운내용;
+            }
+            else
+            {
+                // 파일이 없으면 새로운 파일 내용 작성
+                내용 += "\r\n" + 새로운내용;
+            }
+
+            // 파일에 저장
+            System.IO.File.WriteAllText(전체파일명, 내용, System.Text.Encoding.UTF8);
+            Console.WriteLine("저장파일명=" + 파일명);
+
+            // 다음달 자료 자동 열기
+            현재열린파일명 = 전체파일명;
+            loadData();
+
+
         }
     }
 }
