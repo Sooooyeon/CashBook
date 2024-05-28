@@ -46,8 +46,12 @@
             // 
             // button1
             // 
+            this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(187)))), ((int)(((byte)(0)))));
             this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(149)))), ((int)(((byte)(0)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(0, 263);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(313, 44);
@@ -68,6 +72,7 @@
             this.Text = "저장 파일 목록";
             this.Load += new System.EventHandler(this.fFileList_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
