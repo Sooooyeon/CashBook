@@ -69,6 +69,7 @@
             this.Controls.Add(this.listBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fFileList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "저장 파일 목록";
             this.Load += new System.EventHandler(this.fFileList_Load);
             this.ResumeLayout(false);
