@@ -28,6 +28,24 @@ namespace MoneyBook
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            // 분류입력
+            if (txtType.Text == "")
+            {
+                txtType.Focus();
+                return;
+            }
+
+            // 금액입력체크
+            if (txtAmt.Text == "")
+            {
+                txtAmt.Focus();
+                return;
+            }
+
+            // 금액에 콤마 표시
+            int 금액 = int.Parse(txtAmt.Text.Replace(",",""));
+            txtAmt.Text = 금액.ToString("N0");
+
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
