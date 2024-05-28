@@ -109,18 +109,22 @@
             // 
             // btnOk
             // 
+            this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(187)))), ((int)(((byte)(0)))));
+            this.btnOk.FlatAppearance.BorderSize = 0;
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOk.Location = new System.Drawing.Point(93, 274);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(214, 44);
             this.btnOk.TabIndex = 8;
             this.btnOk.Text = "확인";
-            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // fIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(253)))), ((int)(((byte)(219)))));
             this.ClientSize = new System.Drawing.Size(358, 350);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.dtDate);

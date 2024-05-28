@@ -432,5 +432,15 @@ namespace MoneyBook
 
 
         }
+
+        private void conEditBtn_Click(object sender, EventArgs e)
+        {
+            editData();
+        }
+
+        private void conDeleteBtn_Click(object sender, EventArgs e)
+        {
+            delData();
+        }
     }
 }

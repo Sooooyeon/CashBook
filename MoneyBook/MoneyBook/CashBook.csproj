@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F54CEF0A-E28F-4889-81F4-7772E9F6C91B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MoneyBook</RootNamespace>
-    <AssemblyName>MoneyBook</AssemblyName>
+    <RootNamespace>CashBook</RootNamespace>
+    <AssemblyName>CashBook</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>moneybook.ico</ApplicationIcon>
+    <ApplicationIcon>CashBook.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -104,6 +104,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -119,7 +120,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="moneybook.ico" />
+    <Content Include="CashBook.ico" />
+    <None Include="Resources\logo1.bmp" />
+    <None Include="Resources\logo.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

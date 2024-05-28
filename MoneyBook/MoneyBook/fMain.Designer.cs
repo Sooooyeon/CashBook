@@ -50,6 +50,8 @@
             this.sbSumIn = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.sbSumOut = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sbAmt = new System.Windows.Forms.ToolStripStatusLabel();
             this.lv1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,10 +59,8 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.편지ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.sbAmt = new System.Windows.Forms.ToolStripStatusLabel();
+            this.conEditBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.conDeleteBtn = new System.Windows.Forms.ToolStripMenuItem();
             btnLogin = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -79,6 +79,7 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(253)))), ((int)(((byte)(219)))));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnIn,
             this.btnOut,
@@ -245,8 +246,22 @@
             this.sbSumOut.Size = new System.Drawing.Size(16, 17);
             this.sbSumOut.Text = "0";
             // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(31, 17);
+            this.toolStripStatusLabel5.Text = "잔액";
+            // 
+            // sbAmt
+            // 
+            this.sbAmt.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.sbAmt.Name = "sbAmt";
+            this.sbAmt.Size = new System.Drawing.Size(16, 17);
+            this.sbAmt.Text = "0";
+            // 
             // lv1
             // 
+            this.lv1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(254)))), ((int)(((byte)(230)))));
             this.lv1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -296,35 +311,24 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.편지ToolStripMenuItem,
-            this.삭제ToolStripMenuItem});
+            this.conEditBtn,
+            this.conDeleteBtn});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(99, 48);
             // 
-            // 편지ToolStripMenuItem
+            // conEditBtn
             // 
-            this.편지ToolStripMenuItem.Name = "편지ToolStripMenuItem";
-            this.편지ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.편지ToolStripMenuItem.Text = "편집";
+            this.conEditBtn.Name = "conEditBtn";
+            this.conEditBtn.Size = new System.Drawing.Size(98, 22);
+            this.conEditBtn.Text = "편집";
+            this.conEditBtn.Click += new System.EventHandler(this.conEditBtn_Click);
             // 
-            // 삭제ToolStripMenuItem
+            // conDeleteBtn
             // 
-            this.삭제ToolStripMenuItem.Name = "삭제ToolStripMenuItem";
-            this.삭제ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.삭제ToolStripMenuItem.Text = "삭제";
-            // 
-            // toolStripStatusLabel5
-            // 
-            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(31, 17);
-            this.toolStripStatusLabel5.Text = "잔액";
-            // 
-            // lbInt
-            // 
-            this.sbAmt.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.sbAmt.Name = "lbInt";
-            this.sbAmt.Size = new System.Drawing.Size(16, 17);
-            this.sbAmt.Text = "0";
+            this.conDeleteBtn.Name = "conDeleteBtn";
+            this.conDeleteBtn.Size = new System.Drawing.Size(98, 22);
+            this.conDeleteBtn.Text = "삭제";
+            this.conDeleteBtn.Click += new System.EventHandler(this.conDeleteBtn_Click);
             // 
             // fMain
             // 
@@ -337,7 +341,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "가계부";
+            this.Text = "CashBook";
             this.Load += new System.EventHandler(this.fMain_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -373,8 +377,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel sbSumOut;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 편지ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 삭제ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem conEditBtn;
+        private System.Windows.Forms.ToolStripMenuItem conDeleteBtn;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
