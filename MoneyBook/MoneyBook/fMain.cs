@@ -55,6 +55,9 @@ namespace MoneyBook
             }
             sbSumIn.Text = 합계_입금.ToString("N0");
             sbSumOut.Text = 합계_출금.ToString("N0");
+
+            if (잔액 < 0) sbAmt.ForeColor = Color.Red;
+            else sbAmt.ForeColor = Color.Blue;
             sbAmt.Text = 잔액.ToString("N0");
         }
 
