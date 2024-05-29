@@ -19,22 +19,22 @@ namespace MoneyBook
 
         private void fFileList_Load(object sender, EventArgs e)
         {
-            string 폴더위치 = AppDomain.CurrentDomain.BaseDirectory + "Data";
-            if (System.IO.Directory.Exists(폴더위치) == false) return;
+            string directory = AppDomain.CurrentDomain.BaseDirectory + "Data";
+            if (System.IO.Directory.Exists(directory) == false) return;
 
-            string[] 파일목록 = System.IO.Directory.GetFiles(폴더위치, "*.csv");
+            string[] FileList = System.IO.Directory.GetFiles(directory, "*.csv");
 
-            for(int i = 0; i < 파일목록.Length; i++)
+            for(int i = 0; i < FileList.Length; i++)
             {
-                string 파일명 = 파일목록[i];
+                string fileName = FileList[i];
 
                 // 역슬래쉬 찾기 (못찾으면 -1)
-                var 역슬래쉬위치 = 파일명.LastIndexOf('\\');
-                var 확장자위치 = 파일명.LastIndexOf(".");
+                var findSlash = fileName.LastIndexOf('\\');
+                var fingDot = fileName.LastIndexOf(".");
 
-                var 파일이름 = 파일명.Substring(역슬래쉬위치+1, 확장자위치 - 역슬래쉬위치 -1);
+                var addFileName = fileName.Substring(findSlash+1, fingDot - findSlash -1);
 
-                listBox1.Items.Add(파일이름);
+                listBox1.Items.Add(addFileName);
             }
 
             if(listBox1.Items.Count < 0)
@@ -42,12 +42,11 @@ namespace MoneyBook
                 button1.Enabled = false;
             }
         }
-        public string 선택된파일명 = "";
+        public string selectedFileName = "";
         private void button1_Click(object sender, EventArgs e)
         {
-
-            string 저장폴더 = AppDomain.CurrentDomain.BaseDirectory + "Data\\";
-            선택된파일명 = 저장폴더 + listBox1.Items[listBox1.SelectedIndex].ToString() + ".csv";
+            string directory = AppDomain.CurrentDomain.BaseDirectory + "Data\\";
+            selectedFileName = directory + listBox1.Items[listBox1.SelectedIndex].ToString() + ".csv";
             DialogResult = System.Windows.Forms.DialogResult.OK;  
         }
     }

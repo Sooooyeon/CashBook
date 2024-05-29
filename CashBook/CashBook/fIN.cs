@@ -17,13 +17,13 @@ namespace MoneyBook
             InitializeComponent();
         }
 
-        public fIN(string 날짜, string 분류, string 금액, string 비고)
+        public fIN(string date, string category, string amount, string memo)
         {
             InitializeComponent();
-            dtDate.Value = DateTime.Parse(날짜);
-            txtType.Text = 분류;
-            txtAmt.Text = 금액;
-            txtMemo.Text = 비고;
+            dtDate.Value = DateTime.Parse(date);
+            txtType.Text = category;
+            txtAmt.Text = amount;
+            txtMemo.Text = memo;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -43,8 +43,8 @@ namespace MoneyBook
             }
 
             // 금액에 콤마 표시
-            int 금액 = int.Parse(txtAmt.Text.Replace(",",""));
-            txtAmt.Text = 금액.ToString("N0");
+            int iAmount = int.Parse(txtAmt.Text.Replace(",",""));
+            txtAmt.Text = iAmount.ToString("N0");
 
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }
