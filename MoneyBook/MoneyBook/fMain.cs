@@ -48,17 +48,17 @@ namespace MoneyBook
                 int iIncome = int.Parse(income);
                 int iSpending = int.Parse(spending);
 
-                balance += iIncome - iSpending;
-
                 sumIncome += iIncome;
                 sumSpending += iSpending;
+
+                balance += iIncome - iSpending;
             }
             sbSumIn.Text = sumIncome.ToString("N0");
             sbSumOut.Text = sumSpending.ToString("N0");
 
+            sbAmt.Text = balance.ToString("N0");
             if (balance < 0) sbAmt.ForeColor = Color.Red;
             else sbAmt.ForeColor = Color.Blue;
-            sbAmt.Text = balance.ToString("N0");
         }
 
         void userLogin()
@@ -175,6 +175,7 @@ namespace MoneyBook
             string income = lv.SubItems[2].Text;
             string spending = lv.SubItems[3].Text;
             string memo = lv.SubItems[4].Text;
+
             if (income != "")
             {
                 // 입금 화면을 호출하고 현재 데이터를 전송
@@ -276,8 +277,8 @@ namespace MoneyBook
             string content = "날짜,분류,입금,출금,비고";
 
 
-            int 건수 = lv1.Items.Count;
-            for (int i = 0; i < 건수; i++)
+            int listCount = lv1.Items.Count;
+            for (int i = 0; i < listCount; i++)
             {
                 ListViewItem item = lv1.Items[i];
                 string date = item.SubItems[0].Text.Replace(",", "");
