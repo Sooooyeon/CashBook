@@ -39,8 +39,8 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnSave = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLoad = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.changeMonth = new System.Windows.Forms.ToolStripButton();
+            this.closeMonth = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbmonth = new System.Windows.Forms.ToolStripStatusLabel();
@@ -87,8 +87,8 @@
             this.btnEdit,
             this.btnDelete,
             this.toolStripDropDownButton1,
-            this.toolStripButton1,
-            this.toolStripButton2});
+            this.changeMonth,
+            this.closeMonth});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(714, 25);
@@ -157,23 +157,23 @@
             this.btnLoad.Text = "불러오기";
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // toolStripButton1
+            // changeMonth
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(63, 22);
-            this.toolStripButton1.Text = "월변경";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.changeMonth.Image = ((System.Drawing.Image)(resources.GetObject("changeMonth.Image")));
+            this.changeMonth.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.changeMonth.Name = "changeMonth";
+            this.changeMonth.Size = new System.Drawing.Size(63, 22);
+            this.changeMonth.Text = "월변경";
+            this.changeMonth.Click += new System.EventHandler(this.changeMonth_Click);
             // 
-            // toolStripButton2
+            // closeMonth
             // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(63, 22);
-            this.toolStripButton2.Text = "월마감";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.closeMonth.Image = ((System.Drawing.Image)(resources.GetObject("closeMonth.Image")));
+            this.closeMonth.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.closeMonth.Name = "closeMonth";
+            this.closeMonth.Size = new System.Drawing.Size(63, 22);
+            this.closeMonth.Text = "월마감";
+            this.closeMonth.Click += new System.EventHandler(this.closeMonth_Click);
             // 
             // statusStrip1
             // 
@@ -192,7 +192,8 @@
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(714, 22);
             this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";// 
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
@@ -378,8 +379,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem conEditBtn;
         private System.Windows.Forms.ToolStripMenuItem conDeleteBtn;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton changeMonth;
+        private System.Windows.Forms.ToolStripButton closeMonth;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel lbmonth;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
